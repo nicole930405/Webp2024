@@ -28,23 +28,19 @@
                 console.log(e.key);
                 if (e.key == 'Escape') {
                     container.textContent = '';
-                    updateCounter();
                 } else if (e.key == 'Backspace') {
                     if (container.textContent.length > 0)
                         container.textContent = container.textContent.slice(0, -1);
                     else
                         console.log('Nothing to delete!');
-                    updateCounter();
                 } else if (e.key.length == 1 && e.key.match(/[a-z]/)) { // detect a-z only, lowercase only
                     if (e.key == container.textContent[0]) {
                         console.log('Matched: ' + e.key);
                         container.textContent = container.textContent.slice(1);
                         addch(randomNumber(1, 3));
-                        updateCounter();
                         return;
                     }
                     container.textContent += e.key;
-                    updateCounter();
                 }
             })
             function addch(n=1) {
@@ -55,9 +51,6 @@
                 }
                 updateCounter();
                 return n;
-            }
-            function updateCounter() {
-                document.getElementById('counter').textContent = container.textContent.length;
             }
             function main() {
                 addch(randomNumber(0,2));
