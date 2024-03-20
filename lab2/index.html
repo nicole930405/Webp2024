@@ -17,7 +17,6 @@
         </style>
     </head>
     <body onload="main()">
-        <h1>lab2</h1>
         <div id="container" tabindex="0" class="blockquote text-nowrap"></div>
         <script>
             var container = document.getElementById('container');
@@ -33,7 +32,7 @@
                         container.textContent = container.textContent.slice(0, -1);
                     else
                         console.log('Nothing to delete!');
-                } else if (e.key.length == 1 && e.key.match(/[a-z]/)) { // detect a-z only, lowercase only
+                } else if (e.key.length == 1 && e.key.match(/[a-z]/)) {
                     if (e.key == container.textContent[0]) {
                         console.log('Matched: ' + e.key);
                         container.textContent = container.textContent.slice(1);
@@ -44,7 +43,6 @@
                 }
             })
             function addch(n=1) {
-                // add n random characters (from a to z only) to the container.textContent
                 for (var i = 0; i < n; i++) {
                     container.textContent +=
                         String.fromCharCode(97 + Math.floor(Math.random() * 26));
