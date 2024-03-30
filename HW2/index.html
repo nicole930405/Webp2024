@@ -116,11 +116,15 @@
     };
     function next_page(){
         start += 10;
-        if(start <= dataset.length){
-            addNewData(dataset, start);
+        var input = document.getElementById("searchInput").value.toUpperCase();
+        var filteredData = dataset.filter(function(item) {
+            return item.title.toUpperCase().includes(input);
+        });
+        if(start <= filteredData.length){
+            addNewData(filteredData, start);
         }else{
             start -= 10;
-            addNewData(dataset, start);
+            addNewData(filteredData, start);
         }
         
     }
@@ -128,11 +132,15 @@
     
     function last_page(){
         start -= 10;
+        var input = document.getElementById("searchInput").value.toUpperCase();
+        var filteredData = dataset.filter(function(item) {
+            return item.title.toUpperCase().includes(input);
+        });
         if(start >=0){
-            addNewData(dataset, start);
+            addNewData(filteredData, start);
         }else{
             start += 10;
-            addNewData(dataset, start);
+            addNewData(filteredData, start);
         }
     }
 
@@ -141,6 +149,7 @@
         var filteredData = dataset.filter(function(item) {
             return item.title.toUpperCase().includes(input);
         });
+        start = 0;
         addNewData(filteredData, 0);
     }
 </script>
